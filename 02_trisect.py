@@ -4,10 +4,10 @@ def trisect(f, a, b, n):
         x2 = a + 2 * (b - a)/4
         x3 = a + 3 * (b - a)/4
         xs = [x1, x2, x3]
-        min_x_index = 0
-        for j in range(len(xs)):
-            if f(xs[j]) < f(xs[min_x_index]):
-                min_x_index = j
+        fs = []
+        for i in range(len(xs)):
+            fs.append(f(xs[i]))
+        min_x_index = fs.index(min(fs))
         if min_x_index == 0:
             a = a
             b = x2
