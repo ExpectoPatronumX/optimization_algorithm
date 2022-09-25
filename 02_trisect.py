@@ -1,4 +1,5 @@
-def trisect(f, a, b, n):
+def trisect(F, a, b, n):
+    f = {}
     for i in range(n):
         x1 = a + (b - a)/4
         x2 = a + 2 * (b - a)/4
@@ -6,7 +7,7 @@ def trisect(f, a, b, n):
         xs = [x1, x2, x3]
         fs = []
         for i in range(len(xs)):
-            fs.append(f(xs[i]))
+            fs.append(F(xs[i], f))
         min_x_index = fs.index(min(fs))
         if min_x_index == 0:
             a = a
@@ -19,11 +20,13 @@ def trisect(f, a, b, n):
             b = b
     return (a + b) / 2
 
+def F(x, f):
+    if round(x, 3) not in f.keys():
+        f[round(x, 3)] = (x - 5) ** 2
+    return f[round(x, 3)]
 
 def test():
-    def f(x):
-        return (x - 5) ** 2
-    print(trisect(f, 0, 10, 5))
+    print(trisect(F, 0, 10, 5))
 
 if __name__ == "__main__":
     test()
