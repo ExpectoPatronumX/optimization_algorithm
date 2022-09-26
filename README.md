@@ -4,7 +4,7 @@ These are my optimization homeworks.
 It includes some one-demision optimization algorithms.
 
 ## Envrionment
- - Python 3.9.2
+ - Python 3.9.2(Maybe other version can also be useful.)
  - Other dependences can be found in the virtual environment
 
 ## Get start
