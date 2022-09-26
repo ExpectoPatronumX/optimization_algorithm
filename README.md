@@ -1,7 +1,7 @@
 # Optimization algorithms
 
-This is my optimization homeworks.
-It include some one-demision optimization algorithms.
+These are my optimization homeworks.
+It includes some one-demision optimization algorithms.
 
 ## Envrionment
  - Python 3.9.2
