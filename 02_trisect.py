@@ -1,6 +1,7 @@
 def trisect(F, a, b, n):
     f = {}
     for i in range(n):
+        print("Round %d:" % (i + 1))
         x1 = a + (b - a)/4
         x2 = a + 2 * (b - a)/4
         x3 = a + 3 * (b - a)/4
@@ -9,6 +10,12 @@ def trisect(F, a, b, n):
         for i in range(len(xs)):
             fs.append(F(xs[i], f))
         min_x_index = fs.index(min(fs))
+        for i in range(len(xs)):
+            print("x%d:"%(i + 1), xs[i])
+        for i in range(len(xs)):
+            print("F(x%d):"%(i + 1), fs[i])
+        print("The smallest F(x) is F(x%d)" % (min_x_index + 1))
+        print("-" * 100)
         if min_x_index == 0:
             a = a
             b = x2

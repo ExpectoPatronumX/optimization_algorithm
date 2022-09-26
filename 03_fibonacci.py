@@ -8,16 +8,27 @@ def fibonacci(f, a_0, b_0, n, epsilon):
     L_2 = (Fib(n - 1) * L_1) / (Fib(n)) + (((-1) ** n) * epsilon) / (Fib(n))
     b = [a_0 + L_2]
     a = [b_0 - L_2]
+    print("Round 1:")
+    print("x1:", x1[0])
+    print("x2:", x2[0])
+    print("a:", a[0])
+    print("b:", b[0])
+    print("F(a):", F(a[0], f, val_num))
+    print("F(b):", F(b[0], f, val_num))
     flag = -1
     if F(a[0], f, val_num) < F(b[0], f, val_num):
         x1.append(x1[0])
         x2.append(b[0])
+        print("F(b) is bigger than F(a)")
         flag = 0
     else:
         x1.append(a[0])
         x2.append(x2[0])
+        print("F(b) is smaller than  or equal to F(a)")
         flag = 1
+    print("-" * 100)
     for i in range(1, n):
+        print("Round %d:" %(i + 1))
         if flag == 0:
             b.append(a[i - 1])
             a.append(x2[i] - (b[i] - x1[i]))
@@ -40,6 +51,17 @@ def fibonacci(f, a_0, b_0, n, epsilon):
                 x1.append(a[i])
                 x2.append(x2[i])
                 flag = 1
+        print("x1:", x1[i])
+        print("x2:", x2[i])
+        print("a:", a[i])
+        print("b:", b[i])
+        print("F(a):", F(a[i], f, val_num))
+        print("F(b):", F(b[i], f, val_num))
+        if flag == 0:
+            print("F(b) is bigger than F(a)")
+        elif flag == 1:
+            print("F(b) is smaller than  or equal to F(a)")
+        print("-" * 100)
     return (x1[-1] + x2[-1]) / 2
 
 
