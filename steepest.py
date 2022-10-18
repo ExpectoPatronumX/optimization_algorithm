@@ -1,6 +1,7 @@
 import numpy as np
 import sympy as sp
 from newton import newton
+import math
 def steepest(F, x1, x2, x_0):
     f = []
     g_num = []
@@ -12,11 +13,11 @@ def steepest(F, x1, x2, x_0):
     x_num = []
     x.append(x_0)
     x_num.append(x_0)
+    g_num.append(np.array([[g[0][0].evalf(subs={"x1":x_0[0][0], "x2":x_0[1][0]})], 
+                           [g[1][0].evalf(subs={"x1":x_0[0][0], "x2":x_0[1][0]})]
+                          ]))
     i = 0
-    while True :
-        g_num.append(np.array([[g[0][0].evalf(subs={"x1":x_0[0][0], "x2":x_0[1][0]})], 
-                               [g[1][0].evalf(subs={"x1":x_0[0][0], "x2":x_0[1][0]})]
-                              ]))
+    while i == 0 or round(math.sqrt(g_num[i][0][0] ** 2 + g_num[i][1][0] ** 2), 4) >= 0.001:
         p.append(-g_num[i])
         print("g%d:\n"%(i), g_num[i])
         print("p%d:\n"%(i), p[i])
@@ -31,6 +32,10 @@ def steepest(F, x1, x2, x_0):
                                [x[i + 1][1][0].evalf(subs={"t":t_num[i]})]
                                ]))
         print("x%d:\n"%(i + 1), x_num[i + 1])
+        g_num.append(np.array([[g[0][0].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]})], 
+                               [g[1][0].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]})]
+                              ]))
+        print(math.sqrt(g_num[i + 1][0][0] ** 2 + g_num[i + 1][1][0] ** 2))
         input()
         i += 1
 
