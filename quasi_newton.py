@@ -14,7 +14,7 @@ def quasi_newton(f, x0):
     p = []
     delta_x = []
     delta_g = []
-    while i == 0 or math.sqrt(g(x_num[i])[0][0] ** 2 + g(x_num[i])[1][0] ** 2) >= 0.01:
+    while i == 0 or math.sqrt(g(f, x_num[i])[0][0] ** 2 + g(f, x_num[i])[1][0] ** 2) >= 0.01:
         if i == 0:
             print("Roud %d"%(i + 1))
             H.append(np.array([[1, 0],[0, 1]]))
@@ -22,7 +22,7 @@ def quasi_newton(f, x0):
             x_num.append(np.array(x0))
             x.append(np.array(x0))
             print("x0:\n", np.around(x_num[i], 6))
-            gs.append(g(x_num[i]))
+            gs.append(g(f, x_num[i]))
             p.append(-gs[i])
             print("g0:\n", np.around(gs[i], 6))
             print("p0:\n", np.around(p[i], 6))
@@ -40,7 +40,7 @@ def quasi_newton(f, x0):
             print("-" * 100)
         else:
             print("Roud %d"%(i + 1))
-            gs.append(g(x_num[i]))
+            gs.append(g(f, x_num[i]))
             delta_x.append(x_num[i] - x_num[i - 1])
             delta_g.append(gs[i] - gs[i - 1])
             add1 = delta_x[i - 1] @ delta_x[i - 1].T / (delta_x[i - 1].T @ delta_g[i - 1])
