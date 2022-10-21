@@ -36,7 +36,6 @@ def steepest(F, x1, x2, x_0):
                                [g[1][0].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]})]
                               ]))
         print(math.sqrt(g_num[i + 1][0][0] ** 2 + g_num[i + 1][1][0] ** 2))
-        input()
         i += 1
 
 def test():

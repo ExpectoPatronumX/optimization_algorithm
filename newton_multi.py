@@ -36,7 +36,7 @@ def newton_multi(F, x1, x2, x0, epsilon):
              float(h[1][1].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]}))]
             ]))
         p.append(- np.linalg.inv(hs[i]) @ gs[i])
-        x.append(x[i] + t * p[i])
+        x.append(x_num[i] + t * p[i])
         #f.append(F.evalf(subs={"x1":x[i + 1][0][0], "x2":x[i + 1][1][0]}))
         #t_num.append(newton(f[i + 1], t, 1, 0.001))
         t_num.append(1)
@@ -44,8 +44,8 @@ def newton_multi(F, x1, x2, x0, epsilon):
                                [x[i + 1][1][0]]
                                ]))
         gs.append(np.array([
-            [g[0][0].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]})], 
-            [g[1][0].evalf(subs={"x1":x_num[i][0][0], "x2":x_num[i][1][0]})], 
+            [g[0][0].evalf(subs={"x1":x_num[i + 1 ][0][0], "x2":x_num[i + 1][1][0]})], 
+            [g[1][0].evalf(subs={"x1":x_num[i + 1][0][0], "x2":x_num[i + 1][1][0]})], 
             ]))
         print("x%d:\n"%(i), x_num[i])
         print("g%d:\n"%(i), gs[i])
